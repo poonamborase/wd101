@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>registration Form</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous" />
+
+
+  <style type="text/css">
+    input[type=text],
+    input[type=email],
+    input[type=number],
+    input[type=select],
+    input[type=date],
+    input[type=select],
+    input[type=password],
+    input[type=tel] {
+      width: 35%;
+      padding: 12px;
+      border-radius: 4px;
+      resize: vertical;
+    }
+
+    textarea {
+      width: 35%;
+      padding: 12px;
+      border-radius: 4px;
+      resize: vertical;
+    }
+
+    input[type=radio],
+    input[type=checkbox] {
+      width: 1%;
+      padding-left: 0%;
+      border-radius: 4px;
+      resize: vertical;
+    }
+
+    h1 {
+      font-family: Arial;
+      font-size: medium;
+      font-style: normal;
+      font-weight: bold;
+      margin-left: 150px;
+    }
+
+    label {
+      padding: 12px 12px 12px 0;
+      display: inline-block;
+    }
+
+
+    .button {
+      background-color: #32a336;
+      border: 2px solid #32a336;
+      color: white;
+      border-radius: 5px;
+      font-size: 20px;
+      width: 100px;
+    }
+
+    .button:hover {
+      background-color: #42e162;
+    }
+
+    .col-10 {
+      float: left;
+      width: 10%;
+      margin-top: 6px;
+      padding: 7px;
+    }
+
+    .col-90 {
+      float: left;
+      width: 90%;
+      margin-top: 6px;
+    }
+
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    @media screen and (max-width: 600px) {
+
+      .col-10,
+      .col-90,
+      input[type=submit] {
+        width: 100%;
+        margin-top: 0;
+      }
+    }
+
+    th,
+    td {
+      margin-left: 20px;
+      margin-right: 20px;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  </style>
+
+</head>
+
+<body>
+
+
+  <div class="container-fluid" style="padding-top: 20vh; margin-bottom: 30vh;">
+    <h1 style="font-size: 30px;">Registaration Form</h1><br>
+    <div class="container">
+      <form method="">
+        <div class="row">
+          <div class="col-10">
+            <label for="fname">Name:</label>
+          </div>
+          <div class="col-90">
+            <input type="text" id="t1" name="name" placeholder="Enter your first name" required/>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-10">
+            <label for="email">Email:</label>
+          </div>
+          <div class="col-90">
+            <input type="email" id="t2" name="email" placeholder="it should contain @,." required/>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-10">
+            <label for="cource">Password</label>
+          </div>
+          <div class="col-90">
+            <input type="text" id="t3" name="password" placeholder="Enter the Password." required/>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-10">
+            <label for="dob">Date Of Birth:</label>
+          </div>
+          <div class="col-90">
+            <input type="Date" style="color:#e3097e" id="t4" name="dob" required />
+          </div>
+        </div>
+        <input id="t5" type="checkbox" id="tc" name="tc" required>
+        <label> Accept Terms and Conditions</label><br>
+        <br />
+        <button class="button" type="button" onclick="registration()">submit</button>
+
+      </form>
+      <center>
+        <table>
+          <h2>Entries</h2>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>dob</th>
+            <th>accepted tearms?</th>
+          </tr>
+          <tr>
+            <td id="tb1"></td>
+            <td id="tb2"></td>
+            <td id="tb3"></td>
+            <td id="tb4"></td>
+            <td id="tb5"></td>
+          </tr>
+        </table>
+      </center>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+    crossorigin="anonymous"></script>
+</body>
+<script>
+  function registration() {
+
+    var name = document.getElementById("t1").value;
+    var email = document.getElementById("t2").value;
+    var pwd = document.getElementById("t3").value;
+
+    // email id expression code
+    var pwd_expression = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/;
+    var letters = /^[A-Za-z]+$/;
+    var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+    if (name == '') {
+      alert('Please enter your name');
+      document.getElementById("t1").value = "";
+      document.getElementById("t2").value = "";
+      document.getElementById("t3").value = "";
+
+    }
+    // else if(!letters.test(name))
+    // {
+    // 	alert('Name field required only alphabet characters');
+    //         document.getElementById("t1").value="";
+    //         document.getElementById("t2").value="";
+    //         document.getElementById("t3").value="";
+    //         document.getElementById("t4").value="";
+    // }
+    else if (email == '') {
+      alert('Please enter your user email id');
+      document.getElementById("t1").value = "";
+      document.getElementById("t2").value = "";
+      document.getElementById("t3").value = "";
+      document.getElementById("t4").value = "";
+
+
+    }
+    else if (!filter.test(email)) {
+      alert('Invalid email');
+      document.getElementById("t1").value = "";
+      document.getElementById("t2").value = "";
+      document.getElementById("t3").value = "";
+      document.getElementById("t4").value = "";
+
+
+    }
+    else if (pwd == '') {
+      alert('Please enter Password');
+      document.getElementById("t1").value = "";
+      document.getElementById("t2").value = "";
+      document.getElementById("t3").value = "";
+      document.getElementById("t4").value = "";
+
+
+    }
+    else if (!pwd_expression.test(pwd)) {
+      alert('Upper case, Lower case, Special character and Numeric letter are required in Password filed');
+      document.getElementById("t1").value = "";
+      document.getElementById("t2").value = "";
+      document.getElementById("t3").value = "";
+      document.getElementById("t4").value = "";
+
+
+    }
+    var t4val = document.getElementById("t4").value;
+    var t5val = document.getElementById("t5").value;
+
+    const x = new Date(t4val);
+    const y = new Date('1968-03-01');
+    const z = new Date('2005-03-01');
+
+     if(x>y && x<z)
+     {
+     
+     }
+     else
+     {
+      alert('Invalid Birthdate!! Date must be in between March 1968 to  March 2005');
+      document.getElementById("t1").value = "";
+      document.getElementById("t2").value = "";
+      document.getElementById("t3").value = "";
+      document.getElementById("t4").value = "";
+     }
+
+    document.getElementById("tb1").innerText = name;
+    document.getElementById("tb2").innerText = email;
+    document.getElementById("tb3").innerText = pwd;
+    document.getElementById("tb4").innerText = t4val;
+    if (t5val == 'on') {
+      document.getElementById("tb5").innerText = "Accept";
+    }
+    else {
+      document.getElementById("tb5").innerText = "Not Accept";
+    }
+
+
+  }
+
+</script>
+
+</html>
